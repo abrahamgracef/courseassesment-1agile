@@ -345,6 +345,16 @@ class Bill_App:
         self.save_bill()
 
 
+    def save_bill(self):
+        op = messagebox.askyesno("Save Bill", "Do you want to save the bill?")
+        if op > 0:
+            self.bill_data = self.txtarea.get('1.0', END)
+            f1 = open("bills/"+str(self.bill_no.get())+".txt", "w")
+            f1.write(self.bill_data)
+            f1.close()
+            messagebox.showinfo("Saved", f"Bill no:{self.bill_no.get()} Saved Successfully")
+        else:
+           return
 
     # ===================find_bill================================
     def find_bill(self):
